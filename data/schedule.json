@@ -1,0 +1,83 @@
+[
+  {
+    "day": "Mon",
+    "time": "1:00pm–2:00pm",
+    "class": "Gi / No-Gi / Open Mat",
+    "level": "All",
+    "badge": {
+      "type": "free",
+      "text": "FREE — all welcome"
+    }
+  },
+  {
+    "day": "Mon",
+    "time": "6:30pm–8:00pm",
+    "class": "Fundamentals — No-Gi",
+    "level": "Beginners",
+    "badge": null
+  },
+  {
+    "day": "Tue",
+    "time": "12:00pm–1:00pm",
+    "class": "Gi / No-Gi / Open Mat",
+    "level": "All",
+    "badge": {
+      "type": "free",
+      "text": "FREE — all welcome"
+    }
+  },
+  {
+    "day": "Tue",
+    "time": "7:00pm–8:00pm",
+    "class": "Wrestling",
+    "level": "All",
+    "badge": {
+      "type": "offsite",
+      "text": "@ Rukana Wrestling Club, 72 New Bedford Rd, Luton LU3 1BT"
+    }
+  },
+  {
+    "day": "Wed",
+    "time": "8:00pm–9:30pm",
+    "class": "BJJ — Gi",
+    "level": "All",
+    "badge": {
+      "type": "coach",
+      "text": "Coach Walid"
+    }
+  },
+  {
+    "day": "Thu",
+    "time": "7:00pm–8:30pm",
+    "class": "Fundamentals — BJJ Gi",
+    "level": "Beginners",
+    "badge": null
+  },
+  {
+    "day": "Fri",
+    "time": "8:00pm–9:30pm",
+    "class": "BJJ — No-Gi",
+    "level": "All",
+    "badge": {
+      "type": "coach",
+      "text": "Coach Babz"
+    }
+  },
+  {
+    "day": "Sat",
+    "time": "7:00pm–8:30pm",
+    "class": "Fundamentals — No-Gi",
+    "level": "Beginners",
+    "badge": null
+  },
+  {
+    "day": "Sun",
+    "time": "8:00pm–9:30pm",
+    "class": "BJJ — Gi",
+    "level": "All",
+    "badge": {
+      "type": "coach",
+      "text": "Coach Walid"
+    }
+  }
+]

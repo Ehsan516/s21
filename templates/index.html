@@ -7,7 +7,7 @@
 <meta name="description" content="S21 Submission Fighters Luton — Gi, No-Gi and Wrestling classes 7 days a week, coached by Walid Tadjouri, 4th Degree Black Belt. Based at CYCD, 94-106 Leagrave Rd, Luton.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
@@ -35,8 +35,8 @@
 
   <section class="hero">
     <div class="hero-video-wrap" aria-hidden="true">
-      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="images/hero-poster.jpg">
-        <source src="videos/hero.mp4" type="video/mp4">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="{{ url_for('static', filename='images/hero-poster.jpg') }}">
+        <source src="{{ url_for('static', filename='videos/hero.mp4') }}" type="video/mp4">
       </video>
       <div class="hero-video-overlay"></div>
     </div>
@@ -113,15 +113,14 @@
             <tr><th>Day</th><th>Time</th><th>Class</th><th>Level</th></tr>
           </thead>
           <tbody>
-            <tr><td rowspan="2">Mon</td><td>1:00pm–2:00pm</td><td>Gi / No-Gi / Open Mat <span class="tag-free">FREE — all welcome</span></td><td>All</td></tr>
-            <tr><td>6:30pm–8:00pm</td><td>Fundamentals — No-Gi</td><td>Beginners</td></tr>
-            <tr><td rowspan="2">Tue</td><td>12:00pm–1:00pm</td><td>Gi / No-Gi / Open Mat <span class="tag-free">FREE — all welcome</span></td><td>All</td></tr>
-            <tr><td>7:00pm–8:00pm</td><td>Wrestling <span class="off-site">@ Rukana Wrestling Club, 72 New Bedford Rd, Luton LU3 1BT</span></td><td>All</td></tr>
-            <tr><td>Wed</td><td>8:00pm–9:30pm</td><td>BJJ — Gi <span class="coach-tag">Coach Walid</span></td><td>All</td></tr>
-            <tr><td>Thu</td><td>7:00pm–8:30pm</td><td>Fundamentals — BJJ Gi</td><td>Beginners</td></tr>
-            <tr><td>Fri</td><td>8:00pm–9:30pm</td><td>BJJ — No-Gi <span class="coach-tag">Coach Babz</span></td><td>All</td></tr>
-            <tr><td>Sat</td><td>7:00pm–8:30pm</td><td>Fundamentals — No-Gi</td><td>Beginners</td></tr>
-            <tr><td>Sun</td><td>8:00pm–9:30pm</td><td>BJJ — Gi <span class="coach-tag">Coach Walid</span></td><td>All</td></tr>
+            {% for row in schedule %}
+            <tr>
+              {% if row.day_rowspan %}<td rowspan="{{ row.day_rowspan }}">{{ row.day }}</td>{% endif %}
+              <td>{{ row.time }}</td>
+              <td>{{ row.class }}{% if row.badge %} <span class="{{ row.badge_class }}">{{ row.badge.text }}</span>{% endif %}</td>
+              <td>{{ row.level }}</td>
+            </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
@@ -224,6 +223,6 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
