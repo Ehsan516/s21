@@ -114,11 +114,11 @@
           </thead>
           <tbody>
             {% for row in schedule %}
-            <tr>
-              {% if row.day_rowspan %}<td rowspan="{{ row.day_rowspan }}">{{ row.day }}</td>{% endif %}
-              <td>{{ row.time }}</td>
-              <td>{{ row.class }}{% if row.badge %} <span class="{{ row.badge_class }}">{{ row.badge.text }}</span>{% endif %}</td>
-              <td>{{ row.level }}</td>
+            <tr class="{{ 'day-start' if row.day_start }}">
+              <td class="day-cell">{{ row.day }}</td>
+              <td data-label="Time">{{ row.time }}</td>
+              <td data-label="Class">{{ row.class }}{% if row.badge %} <span class="{{ row.badge_class }}">{{ row.badge.text }}</span>{% endif %}</td>
+              <td data-label="Level">{{ row.level }}</td>
             </tr>
             {% endfor %}
           </tbody>

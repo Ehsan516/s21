@@ -11,9 +11,9 @@ BASE_DIR = Path(__file__).resolve().parent
 SCHEDULE_FILE = BASE_DIR / "data" / "schedule.json"
 
 BADGE_CLASSES = {
-    "free": "tag-free",
-    "coach": "coach-tag",
-    "offsite": "off-site",
+    "free": "badge badge-free",
+    "coach": "badge badge-coach",
+    "offsite": "badge badge-offsite",
 }
 
 app = Flask(__name__)
@@ -33,24 +33,18 @@ def save_schedule(rows):
         f.write("\n")
 
 
-def with_rowspans(rows):
-    """Annotate each row with day_rowspan so consecutive same-day rows
-    can share a single <td rowspan> cell in the template."""
-    grouped = []
-    i, n = 0, len(rows)
-    while i < n:
-        day = rows[i]["day"]
-        j = i
-        while j < n and rows[j]["day"] == day:
-            j += 1
-        span = j - i
-        for k in range(i, j):
-            row = dict(rows[k])
-            row["day_rowspan"] = span if k == i else 0
-            row["badge_class"] = BADGE_CLASSES.get((row.get("badge") or {}).get("type"))
-            grouped.append(row)
-        i = j
-    return grouped
+def annotate_schedule(rows):
+    """Add badge_class (for the pill styling) and day_start (true on the
+    first row of each day, for the visual grouping gap) to each row."""
+    annotated = []
+    prev_day = None
+    for r in rows:
+        row = dict(r)
+        row["badge_class"] = BADGE_CLASSES.get((row.get("badge") or {}).get("type"))
+        row["day_start"] = row["day"] != prev_day
+        prev_day = row["day"]
+        annotated.append(row)
+    return annotated
 
 
 def login_required(view):
@@ -65,7 +59,7 @@ def login_required(view):
 
 @app.route("/")
 def index():
-    return render_template("index.html", schedule=with_rowspans(load_schedule()))
+    return render_template("index.html", schedule=annotate_schedule(load_schedule()))
 
 
 @app.route("/admin/login", methods=["GET", "POST"])
