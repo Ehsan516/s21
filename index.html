@@ -34,11 +34,17 @@
 <main>
 
   <section class="hero">
+    <div class="hero-video-wrap" aria-hidden="true">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="images/hero-poster.jpg">
+        <source src="videos/hero.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
     <div class="wrap hero-inner">
-      <p class="eyebrow">Luton's home of Brazilian Jiu-Jitsu</p>
-      <h1>Train Gi, No-Gi &amp; Wrestling in Luton.</h1>
-      <p class="hero-sub">S21 Submission Fighters Luton offers grassroots, no-ego Brazilian Jiu-Jitsu coaching for all levels — with classes running seven days a week under Walid Tadjouri, 4th Degree Black Belt.</p>
-      <div class="hero-actions">
+      <p class="eyebrow fade-in">Luton's home of Brazilian Jiu-Jitsu</p>
+      <h1 class="slide-up">Train Gi, No-Gi &amp; Wrestling in Luton.</h1>
+      <p class="hero-sub fade-in delay-1">S21 Submission Fighters Luton offers grassroots, no-ego Brazilian Jiu-Jitsu coaching for all levels — with classes running seven days a week under Walid Tadjouri, 4th Degree Black Belt.</p>
+      <div class="hero-actions fade-in delay-2">
         <a href="#contact" class="btn btn-primary">Book your first session</a>
         <a href="#schedule" class="btn btn-ghost">View schedule</a>
       </div>
@@ -67,15 +73,15 @@
       <h2>What we train</h2>
       <p class="section-lead">A well-rounded grappling curriculum — whatever your background, there's a class for you.</p>
       <div class="card-grid">
-        <div class="card">
+        <div class="card reveal">
           <h3>Gi</h3>
           <p>Traditional Brazilian Jiu-Jitsu in the kimono. Build technical fundamentals, grips, sweeps and submissions with a strong focus on body mechanics and leverage.</p>
         </div>
-        <div class="card">
+        <div class="card reveal">
           <h3>No-Gi</h3>
           <p>Fast-paced grappling without the kimono. Develop scrambles, control and submissions in a style that translates directly to MMA and self-defence.</p>
         </div>
-        <div class="card">
+        <div class="card reveal">
           <h3>Wrestling</h3>
           <p>Takedowns, top control and positional dominance. Wrestling fundamentals that sharpen every grappler's game, on the feet and on the mat.</p>
         </div>
@@ -85,10 +91,10 @@
 
   <section class="section alt" id="coach">
     <div class="wrap coach-inner">
-      <div class="coach-photo placeholder">
+      <div class="coach-photo placeholder reveal">
         <span>Coach photo<br>coming soon</span>
       </div>
-      <div class="coach-info">
+      <div class="coach-info reveal">
         <p class="eyebrow">Head Coach</p>
         <h2>Walid Tadjouri</h2>
         <p class="coach-belt">4th Degree Black Belt</p>
@@ -101,7 +107,7 @@
     <div class="wrap">
       <h2>Schedule</h2>
       <p class="section-lead">Classes run seven days a week across Gi, No-Gi and Wrestling. Ages 15+.</p>
-      <div class="schedule-table-wrap">
+      <div class="schedule-table-wrap reveal">
         <table class="schedule-table">
           <thead>
             <tr><th>Day</th><th>Time</th><th>Class</th><th>Level</th></tr>
@@ -127,7 +133,7 @@
       <h2>Membership</h2>
       <p class="section-lead">Train as much or as little as suits you — no long-term contracts.</p>
       <div class="pricing-grid">
-        <div class="price-card featured">
+        <div class="price-card featured reveal">
           <h3>Gold</h3>
           <p class="price-amount">£55<span>/month</span></p>
           <ul class="price-list">
@@ -137,7 +143,7 @@
             <li>Fast progression</li>
           </ul>
         </div>
-        <div class="price-card">
+        <div class="price-card reveal">
           <h3>Silver</h3>
           <p class="price-amount">£30<span>/month</span></p>
           <ul class="price-list">
@@ -146,7 +152,7 @@
             <li>No experience needed</li>
           </ul>
         </div>
-        <div class="price-card">
+        <div class="price-card reveal">
           <h3>Drop In</h3>
           <p class="price-amount">£10<span>/session</span></p>
           <ul class="price-list">
@@ -162,23 +168,23 @@
       <h2>Gallery</h2>
       <p class="section-lead">Photos from the mats — coming soon. Follow us on Instagram for the latest.</p>
       <div class="gallery-grid">
-        <div class="gallery-item placeholder"></div>
-        <div class="gallery-item placeholder"></div>
-        <div class="gallery-item placeholder"></div>
-        <div class="gallery-item placeholder"></div>
+        <div class="gallery-item placeholder reveal"></div>
+        <div class="gallery-item placeholder reveal"></div>
+        <div class="gallery-item placeholder reveal"></div>
+        <div class="gallery-item placeholder reveal"></div>
       </div>
     </div>
   </section>
 
   <section class="section" id="location">
     <div class="wrap location-inner">
-      <div class="location-info">
+      <div class="location-info reveal">
         <h2>Find us</h2>
         <p class="section-lead">Train with us at CYCD in Luton.</p>
         <p class="address">CYCD<br>94–106 Leagrave Rd<br>Luton, LU4 8HZ</p>
         <a href="https://www.google.com/maps?q=CYCD,+94-106+Leagrave+Rd,+Luton,+LU4+8HZ" target="_blank" rel="noopener" class="btn btn-ghost">Get directions</a>
       </div>
-      <div class="map-embed">
+      <div class="map-embed reveal">
         <iframe
           src="https://www.google.com/maps?q=CYCD,+94-106+Leagrave+Rd,+Luton,+LU4+8HZ&output=embed"
           width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
