@@ -1,0 +1,234 @@
+:root{
+  --bg:#0c0d10;
+  --bg-alt:#141519;
+  --card:#1b1d22;
+  --border:#2a2c32;
+  --text:#f3f3f2;
+  --text-dim:#a9abb3;
+  --red:#c8272a;
+  --red-dim:#8f1c1e;
+  --radius:14px;
+  --wrap:1120px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3{
+  font-family:'Bebas Neue',Inter,sans-serif;
+  letter-spacing:0.5px;
+  line-height:1.05;
+}
+
+h1{font-size:clamp(2.6rem,6vw,4.6rem);}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:0.5rem;}
+h3{font-size:1.5rem;margin-bottom:0.5rem;}
+
+a{color:inherit;text-decoration:none;}
+
+.wrap{
+  max-width:var(--wrap);
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* Header */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(12,13,16,0.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:72px;
+}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand-logo{height:40px;width:40px;object-fit:contain;border-radius:8px;background:#fff;}
+.brand-text{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.5px;display:flex;flex-direction:column;line-height:1.1;}
+.brand-text small{font-family:'Inter',sans-serif;font-size:0.65rem;font-weight:600;color:var(--red);letter-spacing:1.5px;text-transform:uppercase;}
+
+.main-nav{display:flex;align-items:center;gap:28px;}
+.main-nav a{font-size:0.92rem;font-weight:500;color:var(--text-dim);transition:color .2s;}
+.main-nav a:hover{color:var(--text);}
+.nav-cta{
+  background:var(--red);color:#fff !important;
+  padding:9px 18px;border-radius:999px;font-weight:600;
+}
+.nav-cta:hover{background:#a91f22;}
+
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;}
+.nav-toggle span{width:22px;height:2px;background:var(--text);display:block;}
+
+/* Hero */
+.hero{
+  padding:120px 0 90px;
+  background:
+    radial-gradient(ellipse at top right, rgba(200,39,42,0.18), transparent 55%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+  border-bottom:1px solid var(--border);
+}
+.hero-inner{max-width:760px;}
+.eyebrow{
+  color:var(--red);font-weight:700;font-size:0.85rem;
+  text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;
+}
+.hero-sub{color:var(--text-dim);font-size:1.15rem;margin:20px 0 34px;max-width:620px;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+
+.btn{
+  display:inline-block;padding:14px 26px;border-radius:999px;
+  font-weight:600;font-size:0.95rem;transition:all .2s;
+}
+.btn-primary{background:var(--red);color:#fff;}
+.btn-primary:hover{background:#a91f22;}
+.btn-ghost{border:1px solid var(--border);color:var(--text);}
+.btn-ghost:hover{border-color:var(--red);color:var(--red);}
+
+/* Stats */
+.stats{background:var(--bg-alt);border-bottom:1px solid var(--border);}
+.stats-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  padding:44px 24px;text-align:center;
+}
+.stat{padding:0 12px;}
+.stat-num{
+  display:block;font-family:'Bebas Neue',sans-serif;
+  font-size:3rem;color:var(--red);line-height:1;
+}
+.stat-label{color:var(--text-dim);font-size:0.85rem;margin-top:6px;display:block;}
+
+/* Sections */
+.section{padding:88px 0;}
+.section.alt{background:var(--bg-alt);}
+.section-lead{color:var(--text-dim);font-size:1.05rem;max-width:640px;margin-bottom:44px;}
+
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:30px;
+}
+.card h3{color:var(--red);}
+.card p{color:var(--text-dim);font-size:0.95rem;}
+
+/* Coach */
+.coach-inner{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:center;}
+.coach-photo{
+  width:280px;height:280px;border-radius:var(--radius);
+  overflow:hidden;background:var(--card);border:1px solid var(--border);
+}
+.coach-photo img{width:100%;height:100%;object-fit:cover;}
+.coach-photo.placeholder{
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text-dim);font-size:0.9rem;text-align:center;
+}
+.coach-belt{color:var(--red);font-weight:700;margin:6px 0 16px;text-transform:uppercase;letter-spacing:1px;font-size:0.9rem;}
+.coach-info p{color:var(--text-dim);max-width:520px;}
+
+/* Schedule */
+.schedule-table-wrap{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);overflow-x:auto;
+}
+.schedule-table{width:100%;border-collapse:collapse;font-size:0.92rem;white-space:nowrap;}
+.schedule-table th,.schedule-table td{
+  padding:14px 18px;text-align:left;border-bottom:1px solid var(--border);
+}
+.schedule-table th{
+  color:var(--text-dim);font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;font-weight:600;
+}
+.schedule-table td:first-child{color:var(--red);font-weight:700;text-transform:uppercase;}
+.schedule-table tr:last-child td{border-bottom:none;}
+.schedule-table td{color:var(--text-dim);white-space:normal;}
+.schedule-table .tag-free{color:var(--red);font-weight:600;}
+.schedule-table .coach-tag{color:var(--text);font-weight:600;}
+.schedule-table .off-site{color:var(--text-dim);font-style:italic;}
+
+/* Pricing / Membership */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.price-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:30px;
+}
+.price-card.featured{border-color:var(--red);position:relative;}
+.price-card h3{color:var(--red);}
+.price-amount{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--text);margin-bottom:18px;}
+.price-amount span{font-family:'Inter',sans-serif;font-size:0.9rem;color:var(--text-dim);font-weight:500;}
+.price-list{list-style:none;}
+.price-list li{
+  color:var(--text-dim);font-size:0.9rem;padding:8px 0;
+  border-top:1px solid var(--border);
+}
+.price-list li:first-child{border-top:none;}
+
+/* Gallery */
+.gallery-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+}
+.gallery-item{
+  aspect-ratio:1/1;border-radius:var(--radius);
+  background:linear-gradient(135deg, var(--card), var(--bg-alt));
+  border:1px dashed var(--border);
+}
+
+/* Location */
+.location-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.address{color:var(--text-dim);margin:16px 0 26px;font-size:1.05rem;}
+
+.map-embed{
+  height:340px;border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--border);
+}
+
+/* CTA */
+.cta{
+  padding:90px 0;text-align:center;
+  background:linear-gradient(180deg, var(--bg-alt), var(--bg));
+  border-top:1px solid var(--border);
+}
+.cta-inner{max-width:600px;margin:0 auto;}
+.cta p{color:var(--text-dim);margin:16px 0 30px;}
+.cta .hero-actions{justify-content:center;}
+
+/* Footer */
+.site-footer{border-top:1px solid var(--border);padding:44px 0 0;background:var(--bg);}
+.footer-inner{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:24px;flex-wrap:wrap;padding-bottom:32px;
+}
+.footer-inner p{color:var(--text-dim);font-size:0.9rem;margin-top:6px;}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{color:var(--text-dim);font-size:0.9rem;}
+.footer-links a:hover{color:var(--red);}
+.footer-bottom{
+  border-top:1px solid var(--border);padding:18px 24px;
+  text-align:center;color:var(--text-dim);font-size:0.8rem;
+}
+
+/* Responsive */
+@media (max-width:860px){
+  .main-nav{
+    position:fixed;top:72px;left:0;right:0;
+    background:var(--bg-alt);border-bottom:1px solid var(--border);
+    flex-direction:column;align-items:flex-start;padding:20px 24px;gap:18px;
+    transform:translateY(-130%);transition:transform .25s;
+  }
+  .main-nav.open{transform:translateY(0);}
+  .nav-toggle{display:flex;}
+  .stats-grid{grid-template-columns:1fr;gap:24px;}
+  .card-grid{grid-template-columns:1fr;}
+  .coach-inner{grid-template-columns:1fr;}
+  .coach-photo{width:100%;height:220px;}
+  .location-inner{grid-template-columns:1fr;}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);}
+  .pricing-grid{grid-template-columns:1fr;}
+}
