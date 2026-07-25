@@ -16,6 +16,8 @@ BADGE_CLASSES = {
     "offsite": "badge badge-offsite",
 }
 
+DAY_ORDER = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY") or secrets.token_hex(32)
 
@@ -33,18 +35,19 @@ def save_schedule(rows):
         f.write("\n")
 
 
-def annotate_schedule(rows):
-    """Add badge_class (for the pill styling) and day_start (true on the
-    first row of each day, for the visual grouping gap) to each row."""
-    annotated = []
-    prev_day = None
+def group_schedule_by_day(rows):
+    """group rows into one column per weekday"""
+    by_day = {}
     for r in rows:
         row = dict(r)
         row["badge_class"] = BADGE_CLASSES.get((row.get("badge") or {}).get("type"))
-        row["day_start"] = row["day"] != prev_day
-        prev_day = row["day"]
-        annotated.append(row)
-    return annotated
+        by_day.setdefault(row["day"], []).append(row)
+
+    extra_days = [d for d in by_day if d not in DAY_ORDER]
+    return [
+        {"day": day, "classes": by_day.get(day, [])}
+        for day in DAY_ORDER + extra_days
+    ]
 
 
 def login_required(view):
@@ -59,7 +62,7 @@ def login_required(view):
 
 @app.route("/")
 def index():
-    return render_template("index.html", schedule=annotate_schedule(load_schedule()))
+    return render_template("index.html", schedule_days=group_schedule_by_day(load_schedule()))
 
 
 @app.route("/admin/login", methods=["GET", "POST"])

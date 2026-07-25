@@ -107,22 +107,24 @@
     <div class="wrap">
       <h2>Schedule</h2>
       <p class="section-lead">Classes run seven days a week across Gi, No-Gi and Wrestling. Ages 15+.</p>
-      <div class="schedule-table-wrap reveal">
-        <table class="schedule-table">
-          <thead>
-            <tr><th>Day</th><th>Time</th><th>Class</th><th>Level</th></tr>
-          </thead>
-          <tbody>
-            {% for row in schedule %}
-            <tr class="{{ 'day-start' if row.day_start }}">
-              <td class="day-cell">{{ row.day }}</td>
-              <td data-label="Time">{{ row.time }}</td>
-              <td data-label="Class">{{ row.class }}{% if row.badge %} <span class="{{ row.badge_class }}">{{ row.badge.text }}</span>{% endif %}</td>
-              <td data-label="Level">{{ row.level }}</td>
-            </tr>
+      <div class="schedule-grid">
+        {% for col in schedule_days %}
+        <div class="day-col reveal">
+          <div class="day-col-head">{{ col.day }}</div>
+          {% if col.classes %}
+            {% for row in col.classes %}
+            <div class="class-card">
+              <div class="class-time">{{ row.time }}</div>
+              <div class="class-name">{{ row.class }}</div>
+              {% if row.level %}<div class="class-level">{{ row.level }}</div>{% endif %}
+              {% if row.badge %}<span class="{{ row.badge_class }}">{{ row.badge.text }}</span>{% endif %}
+            </div>
             {% endfor %}
-          </tbody>
-        </table>
+          {% else %}
+            <div class="class-card class-card-empty">No class</div>
+          {% endif %}
+        </div>
+        {% endfor %}
       </div>
     </div>
   </section>
