@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>S21 Submission Fighters — Luton | Gi, No-Gi &amp; Wrestling</title>
 <meta name="description" content="S21 Submission Fighters Luton — Gi, No-Gi and Wrestling classes 7 days a week, coached by Walid Tadjouri, 4th Degree Black Belt. Based at CYCD, 94-106 Leagrave Rd, Luton.">
+<link rel="icon" href="{{ url_for('static', filename='images/logo.jpg') }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -14,7 +15,7 @@
 <header class="site-header" id="top">
   <div class="wrap header-inner">
     <a class="brand" href="#top">
-      <img src="https://yt3.googleusercontent.com/KABO2MJBUnOi4TfonW82u385I233VYZKx34DL-7xqxfjM9fc1g4epbsqxJIk49DsZbPs0lf0rQ=s900-c-k-c0x00ffffff-no-rj" alt="S21 Submission Fighters logo" class="brand-logo">
+      <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="S21 Submission Fighters logo" class="brand-logo">
       <span class="brand-text">S21 Submission Fighters<small>Luton</small></span>
     </a>
     <nav class="main-nav" id="mainNav">
@@ -22,6 +23,7 @@
       <a href="#coach">Coach</a>
       <a href="#schedule">Schedule</a>
       <a href="#membership">Membership</a>
+      <a href="#faq">FAQ</a>
       <a href="#location">Location</a>
       <a href="#contact" class="nav-cta">Get in touch</a>
     </nav>
@@ -35,8 +37,8 @@
 
   <section class="hero">
     <div class="hero-video-wrap" aria-hidden="true">
-      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="{{ url_for('static', filename='images/hero-poster.jpg') }}">
-        <source src="{{ url_for('static', filename='videos/hero.mp4') }}" type="video/mp4">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="{{ url_for('static', filename='images/' ~ hero.poster) }}">
+        <source src="{{ url_for('static', filename='videos/' ~ hero.video) }}" type="video/mp4">
       </video>
       <div class="hero-video-overlay"></div>
     </div>
@@ -90,16 +92,38 @@
   </section>
 
   <section class="section alt" id="coach">
-    <div class="wrap coach-inner">
-      <div class="coach-photo reveal">
-        <img src="{{ url_for('static', filename='images/coach-walid.jpg') }}" alt="Walid Tadjouri">
+    <div class="wrap">
+      {% if coaches %}
+      <div class="coach-inner">
+        <div class="coach-photo reveal">
+          {% if coaches[0].photo %}
+            <img src="{{ url_for('static', filename='images/coaches/' ~ coaches[0].photo) }}" alt="{{ coaches[0].name }}">
+          {% endif %}
+        </div>
+        <div class="coach-info reveal">
+          {% if coaches[0].role %}<p class="eyebrow">{{ coaches[0].role }}</p>{% endif %}
+          <h2>{{ coaches[0].name }}</h2>
+          {% if coaches[0].belt %}<p class="coach-belt">{{ coaches[0].belt }}</p>{% endif %}
+          {% if coaches[0].bio %}<p>{{ coaches[0].bio }}</p>{% endif %}
+        </div>
       </div>
-      <div class="coach-info reveal">
-        <p class="eyebrow">Head Coach</p>
-        <h2>Walid Tadjouri</h2>
-        <p class="coach-belt">4th Degree Black Belt</p>
-        <p>Leading S21 Submission Fighters Luton with a grassroots, community-first approach to Brazilian Jiu-Jitsu — coaching students of every level, from complete beginners to competitors.</p>
+      {% if coaches[1:] %}
+      <div class="coach-grid">
+        {% for coach in coaches[1:] %}
+        <div class="coach-card reveal">
+          <div class="coach-card-photo">
+            {% if coach.photo %}
+              <img src="{{ url_for('static', filename='images/coaches/' ~ coach.photo) }}" alt="{{ coach.name }}">
+            {% endif %}
+          </div>
+          <h3>{{ coach.name }}</h3>
+          {% if coach.role or coach.belt %}<p class="coach-card-meta">{{ [coach.role, coach.belt] | select | join(' · ') }}</p>{% endif %}
+          {% if coach.bio %}<p class="coach-card-bio">{{ coach.bio }}</p>{% endif %}
+        </div>
+        {% endfor %}
       </div>
+      {% endif %}
+      {% endif %}
     </div>
   </section>
 
@@ -161,12 +185,59 @@
           </ul>
         </div>
       </div>
+      <div class="pricing-cta reveal">
+        <a href="https://maat-app.link/pwhNXuhq60b" target="_blank" rel="noopener" class="btn btn-primary">Join now via MAAT</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="wrap">
+      <h2>Frequently asked questions</h2>
+      <p class="section-lead">New to the mats? Here's what people usually want to know before their first session.</p>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>Do I need experience to start?</summary>
+          <p>No — our Silver membership is built around beginner-friendly fundamentals classes and no prior grappling experience is needed. Everyone starts somewhere.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>What should I bring to my first class?</summary>
+          <p>For Gi classes you'll need a Gi (Kimono); for No-Gi and Wrestling, a rashguard and shorts/spats work well. Bring water, a towel, and flip-flops for walking around off the mats.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>What age do you train from?</summary>
+          <p>Our Luton classes are for ages 15 and up. We don't currently run a dedicated kids program at this branch.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Can I try a class before committing to a membership?</summary>
+          <p>Yes — drop in for £10 a session, no commitment required. Message us on Instagram or TikTok to check the best class to start with.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>How does membership payment work?</summary>
+          <p>Membership is billed monthly through the MAAT app — no long-term contracts, so you can move between Gold and Silver or pause as needed. <a href="https://maat-app.link/pwhNXuhq60b" target="_blank" rel="noopener">Join via MAAT</a>.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Is every class at CYCD?</summary>
+          <p>Almost all — the one exception is Tuesday's 7–8pm Wrestling class, which runs off-site at Rukana Wrestling Club, 72 New Bedford Rd, Luton LU3 1BT.</p>
+        </details>
+      </div>
     </div>
   </section>
 
   <section class="section alt" id="gallery">
     <div class="wrap">
       <h2>Gallery</h2>
+      {% if gallery %}
+      <p class="section-lead">Photos from the mats.</p>
+      <div class="gallery-grid">
+        {% for item in gallery %}
+        <div class="gallery-item reveal">
+          <img src="{{ url_for('static', filename='images/gallery/' ~ item.filename) }}" alt="{{ item.caption or 'S21 Luton training photo' }}">
+          {% if item.caption %}<span class="gallery-caption">{{ item.caption }}</span>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
       <p class="section-lead">Photos from the mats — coming soon. Follow us on Instagram for the latest.</p>
       <div class="gallery-grid">
         <div class="gallery-item placeholder reveal"></div>
@@ -174,6 +245,7 @@
         <div class="gallery-item placeholder reveal"></div>
         <div class="gallery-item placeholder reveal"></div>
       </div>
+      {% endif %}
     </div>
   </section>
 

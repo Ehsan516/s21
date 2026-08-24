@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — S21 Luton</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body class="admin-page">
+  <div class="admin-wrap">
+    <div class="admin-topbar">
+      <h1>Admin</h1>
+    </div>
+    {% include "_admin_nav.html" %}
+
+    <div class="admin-dashboard-grid">
+      <a class="admin-card admin-dash-card" href="{{ url_for('admin_schedule') }}">
+        <h3>Schedule</h3>
+        <p>Edit the weekly class timetable.</p>
+      </a>
+      <a class="admin-card admin-dash-card" href="{{ url_for('admin_coaches') }}">
+        <h3>Coaches</h3>
+        <p>Add or edit coaches, bios and photos.</p>
+      </a>
+      <a class="admin-card admin-dash-card" href="{{ url_for('admin_gallery') }}">
+        <h3>Gallery</h3>
+        <p>Upload or remove photos from the gallery.</p>
+      </a>
+      <a class="admin-card admin-dash-card" href="{{ url_for('admin_hero') }}">
+        <h3>Hero video</h3>
+        <p>Replace the homepage background video and poster image.</p>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

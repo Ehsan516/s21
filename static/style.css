@@ -197,6 +197,20 @@ a{color:inherit;text-decoration:none;}
 .coach-belt{color:var(--red);font-weight:700;margin:6px 0 16px;text-transform:uppercase;letter-spacing:1px;font-size:0.9rem;}
 .coach-info p{color:var(--text-dim);max-width:520px;}
 
+.coach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px;}
+.coach-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:24px;text-align:center;
+}
+.coach-card-photo{
+  width:88px;height:88px;border-radius:50%;overflow:hidden;
+  background:var(--bg);border:1px solid var(--border);margin:0 auto 14px;
+}
+.coach-card-photo img{width:100%;height:100%;object-fit:cover;}
+.coach-card h3{font-size:1.15rem;margin-bottom:2px;}
+.coach-card-meta{color:var(--red);font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px;}
+.coach-card-bio{color:var(--text-dim);font-size:0.88rem;}
+
 /* Schedule — weekly grid of day columns */
 #schedule .wrap{max-width:1320px;}
 .schedule-grid{
@@ -260,6 +274,30 @@ a{color:inherit;text-decoration:none;}
   border-top:1px solid var(--border);
 }
 .price-list li:first-child{border-top:none;}
+.pricing-cta{text-align:center;margin-top:34px;}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:14px;max-width:760px;}
+.faq-item{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:4px 24px;
+}
+.faq-item summary{
+  padding:20px 0;font-weight:700;font-size:1.05rem;cursor:pointer;
+  list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{
+  content:'+';font-family:'Bebas Neue',sans-serif;font-size:1.6rem;
+  color:var(--red);flex-shrink:0;line-height:1;transition:transform .2s;
+}
+.faq-item[open] summary::after{transform:rotate(45deg);}
+.faq-item p{color:var(--text-dim);font-size:0.95rem;padding-bottom:20px;margin-top:-6px;}
+.faq-list .faq-item:nth-child(2){transition-delay:.05s;}
+.faq-list .faq-item:nth-child(3){transition-delay:.10s;}
+.faq-list .faq-item:nth-child(4){transition-delay:.15s;}
+.faq-list .faq-item:nth-child(5){transition-delay:.20s;}
+.faq-list .faq-item:nth-child(6){transition-delay:.25s;}
 
 /* Gallery */
 .gallery-grid{
@@ -269,6 +307,14 @@ a{color:inherit;text-decoration:none;}
   aspect-ratio:1/1;border-radius:var(--radius);
   background:linear-gradient(135deg, var(--card), var(--bg-alt));
   border:1px dashed var(--border);
+  position:relative;overflow:hidden;
+}
+.gallery-item:has(img){border-style:solid;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;}
+.gallery-caption{
+  position:absolute;left:0;right:0;bottom:0;
+  background:linear-gradient(0deg, rgba(12,13,16,.85), transparent);
+  color:var(--text);font-size:0.78rem;padding:20px 12px 10px;
 }
 
 /* Location */
@@ -320,6 +366,7 @@ a{color:inherit;text-decoration:none;}
   .card-grid{grid-template-columns:1fr;}
   .coach-inner{grid-template-columns:1fr;}
   .coach-photo{width:100%;height:220px;}
+  .coach-grid{grid-template-columns:1fr;}
   .location-inner{grid-template-columns:1fr;}
   .gallery-grid{grid-template-columns:repeat(2,1fr);}
   .pricing-grid{grid-template-columns:1fr;}

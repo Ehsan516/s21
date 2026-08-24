@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit hero video — S21 Luton</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body class="admin-page">
+  <div class="admin-wrap">
+    <div class="admin-topbar">
+      <h1>Edit hero video</h1>
+    </div>
+    {% include "_admin_nav.html" %}
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <p class="admin-flash">{{ messages[0] }}</p>
+      {% endif %}
+    {% endwith %}
+
+    <div class="admin-card admin-hero-preview">
+      <video class="admin-hero-video" muted loop playsinline controls
+        poster="{{ url_for('static', filename='images/' ~ hero.poster) }}">
+        <source src="{{ url_for('static', filename='videos/' ~ hero.video) }}" type="video/mp4">
+      </video>
+      <p class="admin-hint">Current video and poster (the frame shown before it plays).</p>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" class="admin-card admin-upload-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <label for="video">New video (mp4, optional)</label>
+      <input type="file" id="video" name="video" accept=".mp4">
+      <label for="poster">New poster image (optional)</label>
+      <input type="file" id="poster" name="poster" accept=".jpg,.jpeg,.png,.webp">
+      <button type="submit" class="btn btn-primary">Save hero video</button>
+      <p class="admin-hint">Up to 25MB each. The hero video plays muted and looped in the top-right of the homepage on desktop — a portrait/phone-shaped clip works best. Leave a field empty to keep the current file.</p>
+    </form>
+  </div>
+</body>
+</html>

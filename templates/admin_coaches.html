@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit coaches — S21 Luton</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body class="admin-page">
+  <div class="admin-wrap">
+    <div class="admin-topbar">
+      <h1>Edit coaches</h1>
+    </div>
+    {% include "_admin_nav.html" %}
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <p class="admin-flash">{{ messages[0] }}</p>
+      {% endif %}
+    {% endwith %}
+
+    <p class="admin-hint">The first coach is shown as the featured head coach. Photos: jpg, jpeg, png or webp, up to 25MB. Leave "Photo" empty to keep the current photo.</p>
+
+    <form method="post" enctype="multipart/form-data" id="coachesForm">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="coachesTable">
+          <thead>
+            <tr>
+              <th>Photo</th><th>Name</th><th>Role</th><th>Belt</th><th>Bio</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="coachesBody">
+            {% for coach in coaches %}
+            <tr>
+              <td>
+                {% if coach.photo %}
+                  <img class="admin-thumb" src="{{ url_for('static', filename='images/coaches/' ~ coach.photo) }}" alt="">
+                {% endif %}
+                <input type="file" name="photo" accept=".jpg,.jpeg,.png,.webp">
+                <input type="hidden" name="existing_photo" value="{{ coach.photo or '' }}">
+              </td>
+              <td><input type="text" name="name" value="{{ coach.name }}" required></td>
+              <td><input type="text" name="role" value="{{ coach.role }}"></td>
+              <td><input type="text" name="belt" value="{{ coach.belt }}"></td>
+              <td><textarea name="bio" rows="2">{{ coach.bio }}</textarea></td>
+              <td><button type="button" class="admin-row-remove" title="Remove row">&times;</button></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="admin-form-actions">
+        <button type="button" id="addRow" class="btn btn-ghost">+ Add coach</button>
+        <button type="submit" class="btn btn-primary">Save coaches</button>
+      </div>
+    </form>
+  </div>
+
+  <template id="rowTemplate">
+    <tr>
+      <td>
+        <input type="file" name="photo" accept=".jpg,.jpeg,.png,.webp">
+        <input type="hidden" name="existing_photo" value="">
+      </td>
+      <td><input type="text" name="name" required></td>
+      <td><input type="text" name="role"></td>
+      <td><input type="text" name="belt"></td>
+      <td><textarea name="bio" rows="2"></textarea></td>
+      <td><button type="button" class="admin-row-remove" title="Remove row">&times;</button></td>
+    </tr>
+  </template>
+
+  <script>
+    document.getElementById('addRow').addEventListener('click', function () {
+      var tpl = document.getElementById('rowTemplate');
+      var clone = tpl.content.cloneNode(true);
+      document.getElementById('coachesBody').appendChild(clone);
+    });
+
+    document.getElementById('coachesBody').addEventListener('click', function (e) {
+      if (e.target.classList.contains('admin-row-remove')) {
+        e.target.closest('tr').remove();
+      }
+    });
+  </script>
+</body>
+</html>

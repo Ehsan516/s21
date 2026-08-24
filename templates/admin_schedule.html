@@ -12,11 +12,8 @@
   <div class="admin-wrap">
     <div class="admin-topbar">
       <h1>Edit schedule</h1>
-      <div class="admin-topbar-actions">
-        <a href="{{ url_for('index') }}" target="_blank" class="btn btn-ghost">View live site</a>
-        <a href="{{ url_for('admin_logout') }}" class="btn btn-ghost">Log out</a>
-      </div>
     </div>
+    {% include "_admin_nav.html" %}
 
     {% with messages = get_flashed_messages() %}
       {% if messages %}

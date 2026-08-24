@@ -1,0 +1,9 @@
+<nav class="admin-nav">
+  <a href="{{ url_for('admin_schedule') }}" class="{{ 'is-active' if request.endpoint == 'admin_schedule' }}">Schedule</a>
+  <a href="{{ url_for('admin_coaches') }}" class="{{ 'is-active' if request.endpoint == 'admin_coaches' }}">Coaches</a>
+  <a href="{{ url_for('admin_gallery') }}" class="{{ 'is-active' if request.endpoint == 'admin_gallery' }}">Gallery</a>
+  <a href="{{ url_for('admin_hero') }}" class="{{ 'is-active' if request.endpoint == 'admin_hero' }}">Hero video</a>
+  <span class="admin-nav-spacer"></span>
+  <a href="{{ url_for('index') }}" target="_blank">View live site</a>
+  <a href="{{ url_for('admin_logout') }}">Log out</a>
+</nav>
