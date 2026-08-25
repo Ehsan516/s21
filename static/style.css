@@ -341,7 +341,11 @@ a{color:inherit;text-decoration:none;}
 
 /* Responsive */
 @media (max-width:860px){
-  .hero-video-wrap{display:none;}
+  .hero-video-wrap{
+    width:100%;
+    opacity:.4;
+  }
+  .hero-video-overlay{display:none;}
   .main-nav{
     position:fixed;top:72px;left:0;right:0;
     background:var(--bg-alt);border-bottom:1px solid var(--border);
