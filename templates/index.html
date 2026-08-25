@@ -70,6 +70,13 @@
     </div>
   </section>
 
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>{% for _ in range(6) %}GI &nbsp;·&nbsp; NO-GI &nbsp;·&nbsp; WRESTLING &nbsp;·&nbsp; <span class="accent">LUTON</span> &nbsp;·&nbsp; {% endfor %}</span>
+      <span>{% for _ in range(6) %}GI &nbsp;·&nbsp; NO-GI &nbsp;·&nbsp; WRESTLING &nbsp;·&nbsp; <span class="accent">LUTON</span> &nbsp;·&nbsp; {% endfor %}</span>
+    </div>
+  </div>
+
   <section class="section" id="programs">
     <div class="wrap">
       <h2>What we train</h2>
@@ -116,7 +123,7 @@
 
   <section class="section" id="schedule">
     <div class="wrap">
-      <h2>Schedule</h2>
+      <h2 class="reveal"><span class="hl-word">Schedule</span></h2>
       <p class="section-lead">Classes run seven days a week across Gi, No-Gi and Wrestling. Ages 15+.</p>
       <div class="schedule-grid">
         {% for col in schedule_days %}
@@ -268,6 +275,7 @@
 </main>
 
 <footer class="site-footer">
+  <div class="footer-wordmark reveal">S21 LUTON</div>
   <div class="wrap footer-inner">
     <div>
       <strong>S21 Submission Fighters — Luton</strong>

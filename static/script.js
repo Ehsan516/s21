@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var onHeaderScroll = function () {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    };
+    onHeaderScroll();
+    window.addEventListener('scroll', onHeaderScroll, { passive: true });
+  }
+
   var toggle = document.getElementById('navToggle');
   var nav = document.getElementById('mainNav');
 
