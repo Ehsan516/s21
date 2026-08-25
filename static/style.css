@@ -184,30 +184,18 @@ a{color:inherit;text-decoration:none;}
 .card p{color:var(--text-dim);font-size:0.95rem;}
 
 /* Coach */
-.coach-inner{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:center;}
-.coach-photo{
-  width:280px;height:280px;border-radius:var(--radius);
-  overflow:hidden;background:var(--card);border:1px solid var(--border);
-}
-.coach-photo img{width:100%;height:100%;object-fit:cover;}
-.coach-photo.placeholder{
-  display:flex;align-items:center;justify-content:center;
-  color:var(--text-dim);font-size:0.9rem;text-align:center;
-}
-.coach-belt{color:var(--red);font-weight:700;margin:6px 0 16px;text-transform:uppercase;letter-spacing:1px;font-size:0.9rem;}
-.coach-info p{color:var(--text-dim);max-width:520px;}
-
-.coach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px;}
+.coach-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;}
 .coach-card{
   background:var(--card);border:1px solid var(--border);
-  border-radius:var(--radius);padding:24px;text-align:center;
+  border-radius:var(--radius);padding:28px 24px;text-align:center;
+  flex:0 1 230px;
 }
 .coach-card-photo{
-  width:88px;height:88px;border-radius:50%;overflow:hidden;
-  background:var(--bg);border:1px solid var(--border);margin:0 auto 14px;
+  width:120px;height:120px;border-radius:50%;overflow:hidden;
+  background:var(--bg);border:1px solid var(--border);margin:0 auto 16px;
 }
 .coach-card-photo img{width:100%;height:100%;object-fit:cover;}
-.coach-card h3{font-size:1.15rem;margin-bottom:2px;}
+.coach-card h3{font-size:1.2rem;margin-bottom:2px;}
 .coach-card-meta{color:var(--red);font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px;}
 .coach-card-bio{color:var(--text-dim);font-size:0.88rem;}
 
@@ -364,9 +352,8 @@ a{color:inherit;text-decoration:none;}
   .nav-toggle{display:flex;}
   .stats-grid{grid-template-columns:1fr;gap:24px;}
   .card-grid{grid-template-columns:1fr;}
-  .coach-inner{grid-template-columns:1fr;}
-  .coach-photo{width:100%;height:220px;}
-  .coach-grid{grid-template-columns:1fr;}
+  .coach-card{flex-basis:calc(50% - 11px);padding:22px 14px;}
+  .coach-card-photo{width:96px;height:96px;}
   .location-inner{grid-template-columns:1fr;}
   .gallery-grid{grid-template-columns:repeat(2,1fr);}
   .pricing-grid{grid-template-columns:1fr;}

@@ -3,14 +3,52 @@
     "name": "Walid Tadjouri",
     "role": "Head Coach",
     "belt": "4th Degree Black Belt",
-    "bio": "Leading S21 Submission Fighters Luton with a grassroots, community-first approach to Brazilian Jiu-Jitsu — coaching students of every level, from complete beginners to competitors.",
+    "bio": "",
     "photo": "coach-walid.jpg"
   },
   {
-    "name": "Babz",
+    "name": "Bablu 'Babz' Choudhury",
     "role": "Coach",
+    "belt": "Black Belt",
+    "bio": "",
+    "photo": "babz.png",
+    "photo_position": "center 10%"
+  },
+  {
+    "name": "Alexi Lenos Alexandrou",
+    "role": "Coach",
+    "belt": "Black Belt",
+    "bio": "",
+    "photo": "alexi.png",
+    "photo_position": "center 15%"
+  },
+  {
+    "name": "Itsham Khan",
+    "role": "Coach",
+    "belt": "Brown Belt",
+    "bio": "",
+    "photo": "itsham.png"
+  },
+  {
+    "name": "Maddasar Khan",
+    "role": "Coach",
+    "belt": "Brown Belt",
+    "bio": "",
+    "photo": "maddasar.png"
+  },
+  {
+    "name": "Ahmed Elbadwy",
+    "role": "Coach",
+    "belt": "Purple Belt",
+    "bio": "",
+    "photo": "ahmed.png"
+  },
+  {
+    "name": "Israar Nabi",
+    "role": "Wrestling Coach",
     "belt": "",
     "bio": "",
-    "photo": null
+    "photo": "israar.png",
+    "photo_position": "center 30%"
   }
 ]

@@ -20,7 +20,7 @@
     </a>
     <nav class="main-nav" id="mainNav">
       <a href="#programs">Programs</a>
-      <a href="#coach">Coach</a>
+      <a href="#coach">Coaches</a>
       <a href="#schedule">Schedule</a>
       <a href="#membership">Membership</a>
       <a href="#faq">FAQ</a>
@@ -73,7 +73,7 @@
   <section class="section" id="programs">
     <div class="wrap">
       <h2>What we train</h2>
-      <p class="section-lead">A well-rounded grappling curriculum — whatever your background, there's a class for you.</p>
+      <p class="section-lead">A well-rounded grappling curriculum; whatever your background, there's a class for you.</p>
       <div class="card-grid">
         <div class="card reveal">
           <h3>Gi</h3>
@@ -93,27 +93,15 @@
 
   <section class="section alt" id="coach">
     <div class="wrap">
+      <h2>Meet the coaches</h2>
+      <p class="section-lead">The team behind every class, from grassroots fundamentals to high-level competition prep.</p>
       {% if coaches %}
-      <div class="coach-inner">
-        <div class="coach-photo reveal">
-          {% if coaches[0].photo %}
-            <img src="{{ url_for('static', filename='images/coaches/' ~ coaches[0].photo) }}" alt="{{ coaches[0].name }}">
-          {% endif %}
-        </div>
-        <div class="coach-info reveal">
-          {% if coaches[0].role %}<p class="eyebrow">{{ coaches[0].role }}</p>{% endif %}
-          <h2>{{ coaches[0].name }}</h2>
-          {% if coaches[0].belt %}<p class="coach-belt">{{ coaches[0].belt }}</p>{% endif %}
-          {% if coaches[0].bio %}<p>{{ coaches[0].bio }}</p>{% endif %}
-        </div>
-      </div>
-      {% if coaches[1:] %}
       <div class="coach-grid">
-        {% for coach in coaches[1:] %}
+        {% for coach in coaches %}
         <div class="coach-card reveal">
           <div class="coach-card-photo">
             {% if coach.photo %}
-              <img src="{{ url_for('static', filename='images/coaches/' ~ coach.photo) }}" alt="{{ coach.name }}">
+              <img src="{{ url_for('static', filename='images/coaches/' ~ coach.photo) }}" alt="{{ coach.name }}" style="object-position: {{ coach.photo_position or 'center' }};">
             {% endif %}
           </div>
           <h3>{{ coach.name }}</h3>
@@ -122,7 +110,6 @@
         </div>
         {% endfor %}
       </div>
-      {% endif %}
       {% endif %}
     </div>
   </section>
@@ -160,7 +147,7 @@
       <div class="pricing-grid">
         <div class="price-card featured reveal">
           <h3>Gold</h3>
-          <p class="price-amount">£55<span>/month</span></p>
+          <p class="price-amount">£60<span>/month</span></p>
           <ul class="price-list">
             <li>7 classes a week</li>
             <li>Grading classes</li>
@@ -170,7 +157,7 @@
         </div>
         <div class="price-card reveal">
           <h3>Silver</h3>
-          <p class="price-amount">£30<span>/month</span></p>
+          <p class="price-amount">£35<span>/month</span></p>
           <ul class="price-list">
             <li>3 fundamental classes a week</li>
             <li>Beginner friendly</li>
@@ -198,11 +185,11 @@
       <div class="faq-list">
         <details class="faq-item reveal">
           <summary>Do I need experience to start?</summary>
-          <p>No — our Silver membership is built around beginner-friendly fundamentals classes and no prior grappling experience is needed. Everyone starts somewhere.</p>
+          <p>No, our Silver membership is built around beginner-friendly fundamentals classes and no prior grappling experience is needed. Everyone starts somewhere.</p>
         </details>
         <details class="faq-item reveal">
           <summary>What should I bring to my first class?</summary>
-          <p>For Gi classes you'll need a Gi (Kimono); for No-Gi and Wrestling, a rashguard and shorts/spats work well. Bring water, a towel, and flip-flops for walking around off the mats.</p>
+          <p>For Gi classes you'll need a Gi; for No-Gi and Wrestling, a rashguard and shorts/spats work well or you can simply wear a tshirt and some tracksuit pants/shorts. Make sure to bring water and stay hydrated!</p>
         </details>
         <details class="faq-item reveal">
           <summary>What age do you train from?</summary>
@@ -210,15 +197,15 @@
         </details>
         <details class="faq-item reveal">
           <summary>Can I try a class before committing to a membership?</summary>
-          <p>Yes — drop in for £10 a session, no commitment required. Message us on Instagram or TikTok to check the best class to start with.</p>
+          <p>Yes drop in for £10 a session, no commitment required. First class is free. Message us on Instagram or TikTok to check the best class to start with.</p>
         </details>
         <details class="faq-item reveal">
           <summary>How does membership payment work?</summary>
-          <p>Membership is billed monthly through the MAAT app — no long-term contracts, so you can move between Gold and Silver or pause as needed. <a href="https://maat-app.link/pwhNXuhq60b" target="_blank" rel="noopener">Join via MAAT</a>.</p>
+          <p>Membership is billed monthly through the MAAT app, no long-term contracts, so you can move between Gold and Silver or pause as needed. <a href="https://maat-app.link/pwhNXuhq60b" target="_blank" rel="noopener">Join via MAAT</a>.</p>
         </details>
         <details class="faq-item reveal">
           <summary>Is every class at CYCD?</summary>
-          <p>Almost all — the one exception is Tuesday's 7–8pm Wrestling class, which runs off-site at Rukana Wrestling Club, 72 New Bedford Rd, Luton LU3 1BT.</p>
+          <p>Almost all with the exception being Tuesday's 7–8:30pm Wrestling class, which runs off-site at Rukana Wrestling Club, 72 New Bedford Rd, Luton LU3 1BT.</p>
         </details>
       </div>
     </div>

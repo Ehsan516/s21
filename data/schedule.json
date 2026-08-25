@@ -6,7 +6,7 @@
     "level": "All",
     "badge": {
       "type": "free",
-      "text": "FREE — all welcome"
+      "text": "Dependant on numbers attending"
     }
   },
   {
@@ -14,7 +14,10 @@
     "time": "6:30pm–8:00pm",
     "class": "Fundamentals — No-Gi",
     "level": "Beginners",
-    "badge": null
+    "badge": {
+      "type": "coach",
+      "text": "Coach Maddasar & Itsham"
+    }
   },
   {
     "day": "Tue",
@@ -23,17 +26,17 @@
     "level": "All",
     "badge": {
       "type": "free",
-      "text": "FREE — all welcome"
+      "text": "Dependant on numbers attending"
     }
   },
   {
     "day": "Tue",
-    "time": "7:00pm–8:00pm",
+    "time": "7:00pm–8:30pm",
     "class": "Wrestling",
     "level": "All",
     "badge": {
       "type": "offsite",
-      "text": "@ Rukana Wrestling Club, 72 New Bedford Rd, Luton LU3 1BT"
+      "text": "Coach Israar — @ Rukana Wrestling Club, 72 New Bedford Rd, Luton LU3 1BT"
     }
   },
   {
@@ -51,7 +54,10 @@
     "time": "7:00pm–8:30pm",
     "class": "Fundamentals — BJJ Gi",
     "level": "Beginners",
-    "badge": null
+    "badge": {
+      "type": "coach",
+      "text": "Coach Ahmed"
+    }
   },
   {
     "day": "Fri",
@@ -65,10 +71,23 @@
   },
   {
     "day": "Sat",
+    "time": "11:00am–12:30pm",
+    "class": "Judo Throws and Leg locks",
+    "level": "All",
+    "badge": {
+      "type": "coach",
+      "text": "Coach Alexi"
+    }
+  },
+  {
+    "day": "Sat",
     "time": "7:00pm–8:30pm",
     "class": "Fundamentals — No-Gi",
     "level": "Beginners",
-    "badge": null
+    "badge": {
+      "type": "coach",
+      "text": "Coach Itsham"
+    }
   },
   {
     "day": "Sun",
