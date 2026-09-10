@@ -12,15 +12,22 @@ document.addEventListener('DOMContentLoaded', function () {
   var nav = document.getElementById('mainNav');
   var backdrop = document.getElementById('navBackdrop');
 
+  var lockedScrollY = 0;
   function closeNav() {
     nav.classList.remove('open');
     if (backdrop) backdrop.classList.remove('open');
-    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, lockedScrollY);
   }
   function openNav() {
+    lockedScrollY = window.scrollY;
     nav.classList.add('open');
     if (backdrop) backdrop.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + lockedScrollY + 'px';
+    document.body.style.width = '100%';
   }
 
   if (toggle && nav) {
