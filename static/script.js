@@ -10,16 +10,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var toggle = document.getElementById('navToggle');
   var nav = document.getElementById('mainNav');
+  var backdrop = document.getElementById('navBackdrop');
+
+  function closeNav() {
+    nav.classList.remove('open');
+    if (backdrop) backdrop.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function openNav() {
+    nav.classList.add('open');
+    if (backdrop) backdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
 
   if (toggle && nav) {
     toggle.addEventListener('click', function () {
-      nav.classList.toggle('open');
+      if (nav.classList.contains('open')) {
+        closeNav();
+      } else {
+        openNav();
+      }
     });
 
     nav.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        nav.classList.remove('open');
-      });
+      link.addEventListener('click', closeNav);
+    });
+
+    if (backdrop) {
+      backdrop.addEventListener('click', closeNav);
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeNav();
     });
   }
 
