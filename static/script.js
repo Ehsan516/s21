@@ -63,26 +63,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var video = document.querySelector('.hero-video');
   if (video) {
-    var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var videoButton = document.createElement('button');
-    videoButton.className = 'video-toggle';
-    videoButton.type = 'button';
-    video.closest('.hero').appendChild(videoButton);
-    function updateVideoButton() {
-      videoButton.textContent = video.paused ? 'Play video' : 'Pause video';
-    }
-    function updateMotion() {
-      if (motion.matches) { video.autoplay = false; video.pause(); }
-      updateVideoButton();
-    }
-    videoButton.addEventListener('click', function () {
-      if (video.paused) video.play().catch(updateVideoButton);
-      else video.pause();
-    });
-    video.addEventListener('play', updateVideoButton);
-    video.addEventListener('pause', updateVideoButton);
-    motion.addEventListener('change', updateMotion);
-    updateMotion();
+    video.muted = true;
+    video.defaultMuted = true;
+    var startVideo = function () {
+      video.play().catch(function () {});
+    };
+    startVideo();
+    video.addEventListener('canplay', startVideo, { once: true });
+    document.addEventListener('touchstart', startVideo, { once: true, passive: true });
   }
 
   var revealItems = document.querySelectorAll('.reveal');

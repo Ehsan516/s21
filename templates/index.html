@@ -10,9 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
+<body id="top">
 
-<header class="site-header" id="top">
+<header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="#top">
       <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="S21 Submission Fighters logo" class="brand-logo">
@@ -39,7 +39,7 @@
 
   <section class="hero">
     <div class="hero-video-wrap" aria-hidden="true">
-      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="{{ url_for('static', filename='images/' ~ hero.poster) }}">
+      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="{{ url_for('static', filename='images/' ~ hero.poster) }}">
         <source src="{{ url_for('static', filename='videos/' ~ hero.video) }}" type="video/mp4">
       </video>
       <div class="hero-video-overlay"></div>
