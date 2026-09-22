@@ -14,7 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var lockedScrollY = 0;
   function closeNav() {
+    if (!nav.classList.contains('open')) return;
     nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
     if (backdrop) backdrop.classList.remove('open');
     document.body.style.position = '';
     document.body.style.top = '';
@@ -24,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function openNav() {
     lockedScrollY = window.scrollY;
     nav.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
     if (backdrop) backdrop.classList.add('open');
     document.body.style.position = 'fixed';
     document.body.style.top = '-' + lockedScrollY + 'px';
@@ -48,8 +51,38 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeNav();
+      if (e.key === 'Escape' && nav.classList.contains('open')) {
+        closeNav();
+        toggle.focus();
+      }
     });
+    window.matchMedia('(min-width: 861px)').addEventListener('change', function (e) {
+      if (e.matches) closeNav();
+    });
+  }
+
+  var video = document.querySelector('.hero-video');
+  if (video) {
+    var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var videoButton = document.createElement('button');
+    videoButton.className = 'video-toggle';
+    videoButton.type = 'button';
+    video.closest('.hero').appendChild(videoButton);
+    function updateVideoButton() {
+      videoButton.textContent = video.paused ? 'Play video' : 'Pause video';
+    }
+    function updateMotion() {
+      if (motion.matches) { video.autoplay = false; video.pause(); }
+      updateVideoButton();
+    }
+    videoButton.addEventListener('click', function () {
+      if (video.paused) video.play().catch(updateVideoButton);
+      else video.pause();
+    });
+    video.addEventListener('play', updateVideoButton);
+    video.addEventListener('pause', updateVideoButton);
+    motion.addEventListener('change', updateMotion);
+    updateMotion();
   }
 
   var revealItems = document.querySelectorAll('.reveal');

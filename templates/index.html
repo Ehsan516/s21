@@ -28,7 +28,7 @@
       <a href="#location">Location</a>
       <a href="#contact" class="nav-cta">Get in touch</a>
     </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-controls="mainNav" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -46,16 +46,16 @@
     </div>
     <div class="wrap hero-inner">
       <p class="eyebrow fade-in">Luton's home of Brazilian Jiu-Jitsu</p>
-      <h1 class="slide-up">Train Gi, No-Gi &amp; Wrestling in Luton.</h1>
+      <h1 class="slide-up">Step on the mat.<br><span>Find your fight.</span></h1>
       <p class="hero-sub fade-in delay-1">S21 Submission Fighters Luton offers grassroots Brazilian Jiu-Jitsu coaching for all levels — with classes running seven days a week under Walid Tadjouri, 4th Degree Black Belt.</p>
       <div class="hero-actions fade-in delay-2">
-        <a href="#contact" class="btn btn-primary">Book your first session</a>
+        <a href="#contact" class="btn btn-primary">Book your free first class ↗</a>
         <a href="#schedule" class="btn btn-ghost">View schedule</a>
       </div>
     </div>
   </section>
 
-  <section class="stats">
+  <section class="stats" aria-label="The club at a glance">
     <div class="wrap stats-grid">
       <div class="stat">
         <span class="stat-num">3</span>
@@ -81,19 +81,20 @@
 
   <section class="section" id="programs">
     <div class="wrap">
-      <h2>What we train</h2>
+      <p class="eyebrow">01 / The disciplines</p>
+      <h2>Three ways in.<br>One team.</h2>
       <p class="section-lead">A well-rounded grappling curriculum; whatever your background, there's a class for you.</p>
       <div class="card-grid">
         <div class="card reveal">
-          <h3>Gi</h3>
+          <span class="program-number">01</span><h3>Gi</h3>
           <p>Traditional Brazilian Jiu-Jitsu in the Gi. Build technical fundamentals, grips, sweeps and submissions with a strong focus on body mechanics and leverage.</p>
         </div>
         <div class="card reveal">
-          <h3>No-Gi</h3>
+          <span class="program-number">02</span><h3>No-Gi</h3>
           <p>Fast-paced grappling without the Gi. Develop scrambles, control and submissions in a style that translates directly to MMA and self-defence.</p>
         </div>
         <div class="card reveal">
-          <h3>Wrestling</h3>
+          <span class="program-number">03</span><h3>Wrestling</h3>
           <p>Takedowns, top control and positional dominance. Wrestling fundamentals that sharpen every grappler's game, on the feet and on the mat.</p>
         </div>
       </div>
@@ -102,6 +103,7 @@
 
   <section class="section alt" id="coach">
     <div class="wrap">
+      <p class="eyebrow">02 / In your corner</p>
       <h2>Meet the coaches</h2>
       <p class="section-lead">The team behind every class, from grassroots fundamentals to high-level competition prep.</p>
       {% if coaches %}
@@ -151,7 +153,8 @@
 
   <section class="section alt" id="membership">
     <div class="wrap">
-      <h2>Membership</h2>
+      <p class="eyebrow">Train on your terms</p>
+      <h2>Your training.<br>Your pace.</h2>
       <p class="section-lead">Train as much or as little as suits you — no long-term contracts. Payment is made via the MAAT app.</p>
       <div class="pricing-grid">
         <div class="price-card featured reveal">
@@ -222,7 +225,8 @@
 
   <section class="section alt" id="gallery">
     <div class="wrap">
-      <h2>Gallery</h2>
+      <p class="eyebrow">Life at S21</p>
+      <h2>On the mats.</h2>
       {% if gallery %}
       <p class="section-lead">Photos from the mats.</p>
       <div class="gallery-grid">
@@ -265,7 +269,8 @@
 
   <section class="cta" id="contact">
     <div class="wrap cta-inner">
-      <h2>Ready to try a session?</h2>
+      <p class="eyebrow">Your first class is free</p>
+      <h2>Everyone starts somewhere.<br><span>Start here.</span></h2>
       <p>Message us on Instagram or TikTok to ask about class times, pricing, or drop-in for your first session.</p>
       <div class="hero-actions">
         <a href="https://www.instagram.com/s21.luton/" target="_blank" rel="noopener" class="btn btn-primary">Message us on Instagram</a>
